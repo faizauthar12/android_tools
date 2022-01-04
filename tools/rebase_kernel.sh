@@ -83,7 +83,7 @@ rm -rf *
 cp -a ${KERNEL_DIR}/* ${PROJECT_DIR}/kernels/msm-${KERNEL_VERSION}.${KERNEL_PATCHLEVEL}
 [[ -d ${AUDIO_KERNEL_DIR}/audio-kernel/ ]] && mkdir -p techpack/ && mv ${AUDIO_KERNEL_DIR}/audio-kernel/ techpack/audio
 git add --all > /dev/null 2>&1
-git -c "user.name=ShivamKumarJha" -c "user.email=jha.shivam3@gmail.com" commit -sm "OEM Release" > /dev/null 2>&1
+git commit -sm "OEM Release" > /dev/null 2>&1
 rm -rf ${PROJECT_DIR}/kernels/${UNZIP_DIR}
 
 # Find best CAF TAG
@@ -170,11 +170,11 @@ DIFFPATHS=(
 )
 for ELEMENT in ${DIFFPATHS[@]}; do
     [[ -d $ELEMENT ]] && git add $ELEMENT > /dev/null 2>&1
-    git -c "user.name=ShivamKumarJha" -c "user.email=jha.shivam3@gmail.com" commit -sm "Add $ELEMENT modifications" > /dev/null 2>&1
+    git commit -sm "Add $ELEMENT modifications" > /dev/null 2>&1
 done
 # Remaining OEM modifications
 git add --all > /dev/null 2>&1
-git -c "user.name=ShivamKumarJha" -c "user.email=jha.shivam3@gmail.com" commit -sm "Add remaining OEM modifications" > /dev/null 2>&1
+git commit -sm "Add remaining OEM modifications" > /dev/null 2>&1
 
 # Push to GitHub
 if [[ ${ORGMEMBER} == "y" ]] && [[ ! -z ${GIT_TOKEN} ]]; then
